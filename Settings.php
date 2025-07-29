@@ -47,6 +47,15 @@ class AADSSO_Settings {
 	public $org_domain_hint = '';
 
 	/**
+	 * Indicates whether the the user is prompted to enter their Entra ID credentials or to select
+	 * from a listing of the accounts in session or to choose a different account altogether.
+	 *
+	 * @var string used for the prompt argument in the Entra ID authorization link
+	 */
+	public $login_prompt = 'login';
+
+
+	/**
 	 * Indicates which field is matched against the authenticated user's User Principal Name (UPN)
 	* to find a corresponding WordPress user. Valid options are 'login', 'email', or 'slug'.
 	 *
@@ -159,6 +168,7 @@ class AADSSO_Settings {
 
 		$defaults = array(
 			'org_display_name' => get_bloginfo( 'name' ),
+			'login_prompt' => 'login',
 			'field_to_match_to_upn' => 'email',
 			'default_wp_role' => null,
 			'enable_auto_provisioning' => false,

@@ -27,6 +27,7 @@ class AADSSO_AuthorizationHelper
 					'client_id'     => $settings->client_id,
 					'resource'      => $settings->graph_endpoint,
 					'redirect_uri'  => $settings->redirect_uri,
+					'prompt'        => $settings->login_prompt,
 					'state'         => $antiforgery_id,
 					'nonce'         => $antiforgery_id,
 				) );

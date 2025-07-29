@@ -258,6 +258,14 @@ class AADSSO_Settings_Page {
 		);
 
 		add_settings_field(
+			'login_prompt', // id
+			__( 'Login prompt behavior', 'aad-sso-wordpress' ), // title
+			array( $this, 'login_prompt_callback' ), // callback
+			'aadsso_settings_page', // page
+			'aadsso_settings_general' // section
+		);
+
+		add_settings_field(
 			'field_to_match_to_upn', // id
 			__( 'Field to match to UPN', 'aad-sso-wordpress' ), // title
 			array( $this, 'field_to_match_to_upn_callback' ), // callback
@@ -360,6 +368,14 @@ class AADSSO_Settings_Page {
 			if ( isset( $input[ $text_field ] ) ) {
 				$sanitary_values[ $text_field ] = sanitize_text_field( $input[ $text_field ] );
 			}
+		}
+
+		// Default login_prompt is 'login'
+		$sanitary_values['login_prompt'] = 'login';
+		if ( isset( $input['login_prompt'] )
+			&& in_array( $input['login_prompt'], array( 'login', 'select_account' ) )
+		) {
+			$sanitary_values['login_prompt'] = $input['login_prompt'];
 		}
 
 		// Default field_to_match_to_upn is 'email'
@@ -536,6 +552,30 @@ class AADSSO_Settings_Page {
 			__( 'The URL where the user is redirected to after signing out of Microsoft Entra ID. '
 			  . 'This URL must be registered in Microsoft Entra ID as a valid redirect URL. (This does not affect '
 			  . ' logging out of the blog, it is only used when logging out of Microsoft Entra ID.)', 'aad-sso-wordpress' )
+		);
+	}
+
+	/**
+	 * Renders the `login_prompt` form control.
+	 */
+	public function login_prompt_callback() {
+		$selected =
+		 isset( $this->settings['login_prompt'] )
+			? $this->settings['login_prompt']
+			: '';
+		?>
+		<select name="aadsso_settings[login_prompt]" id="login_prompt">
+			<option value="login"<?php echo $selected == 'login' ? ' selected="selected"' : ''; ?>>
+				<?php echo __( 'login : Forces the user to enter their credentials', 'aad-sso-wordpress' ); ?>
+			</option>
+			<option value="select_account"<?php echo $selected == 'select_account' ? ' selected="selected"' : ''; ?>>
+				<?php echo __( 'select_account : Prompts the user to select from accounts in session or choose a different account', 'aad-sso-wordpress' ); ?>
+            </option>
+		</select>
+		<?php
+		printf(
+			'<p class="description">%s</p>',
+			__( 'This specifies the login behavior for users during the Entra ID authentication process..', 'aad-sso-wordpress' )
 		);
 	}
 
