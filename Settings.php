@@ -52,7 +52,7 @@ class AADSSO_Settings {
 	 *
 	 * @var string used for the prompt argument in the Entra ID authorization link
 	 */
-	public $login_prompt = 'login';
+	public $prompt = '';
 
 
 	/**
@@ -168,7 +168,7 @@ class AADSSO_Settings {
 
 		$defaults = array(
 			'org_display_name' => get_bloginfo( 'name' ),
-			'login_prompt' => 'login',
+			'prompt' => '',
 			'field_to_match_to_upn' => 'email',
 			'default_wp_role' => null,
 			'enable_auto_provisioning' => false,

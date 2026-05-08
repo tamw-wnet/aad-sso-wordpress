@@ -19,18 +19,22 @@ class AADSSO_AuthorizationHelper
 	 * @return string The authorization URL.
 	 */
 	public static function get_authorization_url( $settings, $antiforgery_id ) {
-		$auth_url = $settings->authorization_endpoint . '?'
-		 . http_build_query( array(
-					'response_type' => 'code',
-					'scope'         => 'openid',
-					'domain_hint'   => $settings->org_domain_hint,
-					'client_id'     => $settings->client_id,
-					'resource'      => $settings->graph_endpoint,
-					'redirect_uri'  => $settings->redirect_uri,
-					'prompt'        => $settings->login_prompt,
-					'state'         => $antiforgery_id,
-					'nonce'         => $antiforgery_id,
-				) );
+		$params = array(
+			'response_type' => 'code',
+			'scope'         => 'openid',
+			'domain_hint'   => $settings->org_domain_hint,
+			'client_id'     => $settings->client_id,
+			'resource'      => $settings->graph_endpoint,
+			'redirect_uri'  => $settings->redirect_uri,
+			'state'         => $antiforgery_id,
+			'nonce'         => $antiforgery_id,
+		);
+
+		if ( ! empty( $settings->prompt ) ) {
+			$params['prompt'] = $settings->prompt;
+		}
+
+		$auth_url = $settings->authorization_endpoint . '?' . http_build_query( $params );
 		return $auth_url;
 	}
 

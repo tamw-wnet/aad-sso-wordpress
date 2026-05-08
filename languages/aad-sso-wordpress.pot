@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Single Sign-on with Microsoft Entra ID\n"
-"POT-Creation-Date: 2025-07-29 12:04-0400\n"
+"POT-Creation-Date: 2026-05-08 19:35+0200\n"
 "PO-Revision-Date: 2016-04-06 13:57+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.9\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: aad-sso-wordpress.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -159,7 +159,7 @@ msgstr ""
 msgid "A secret key for the Microsoft Entra ID application representing this blog."
 msgstr ""
 
-#: SettingsPage.php:534 SettingsPage.php:551 SettingsPage.php:689
+#: SettingsPage.php:534 SettingsPage.php:551 SettingsPage.php:692
 msgid "Set default"
 msgstr ""
 
@@ -180,67 +180,70 @@ msgid ""
 msgstr ""
 
 #: SettingsPage.php:569
-msgid "login : Forces the user to enter their credentials"
+msgid "default : omit prompt parameter"
 msgstr ""
 
 #: SettingsPage.php:572
+msgid "login : Forces the user to enter their credentials"
+msgstr ""
+
+#: SettingsPage.php:575
 msgid ""
 "select_account : Prompts the user to select from accounts in session or choose a "
 "different account"
 msgstr ""
 
-#: SettingsPage.php:578
+#: SettingsPage.php:581
 msgid ""
-"This specifies the login behavior for users during the Entra ID authentication "
-"process. "
-msgstr ""
-
-#: SettingsPage.php:593
-msgid "Email Address"
+"This specifies the login behavior for users during the Entra ID authentication process."
 msgstr ""
 
 #: SettingsPage.php:596
+msgid "Email Address"
+msgstr ""
+
+#: SettingsPage.php:599
 msgid "Login Name"
 msgstr ""
 
-#: SettingsPage.php:602
+#: SettingsPage.php:605
 msgid ""
 "This specifies the WordPress user field which will be used to match to the Microsoft "
 "Entra ID user's UserPrincipalName."
 msgstr ""
 
-#: SettingsPage.php:613
+#: SettingsPage.php:616
 msgid ""
 "Match WordPress users based on the alias of their Microsoft Entra ID "
 "UserPrincipalName. For example, Microsoft Entra ID username <code>bob@example.com</"
 "code> will match WordPress user <code>bob</code>."
 msgstr ""
 
-#: SettingsPage.php:641
+#: SettingsPage.php:644
 msgid ""
 "This is the default role that users will be assigned to if matching Microsoft Entra ID "
 "group to WordPress roles is enabled, but the signed in user isn't a member of any of "
 "the configured Microsoft Entra ID groups."
 msgstr ""
 
-#: SettingsPage.php:653
+#: SettingsPage.php:656
 msgid ""
 "Automatically create WordPress users, if needed, for authenticated Microsoft Entra ID "
 "users."
 msgstr ""
 
-#: SettingsPage.php:664
+#: SettingsPage.php:667
 msgid ""
 "Automatically forward users to the Microsoft Entra ID to sign in, skipping the "
 "WordPress login screen."
 msgstr ""
 
-#: SettingsPage.php:675
+#: SettingsPage.php:678
 msgid ""
 "Automatically assign WordPress user roles based on Microsoft Entra ID group membership."
 msgstr ""
 
-#: SettingsPage.php:690
+#: SettingsPage.php:693
 msgid ""
 "The OpenID Connect configuration endpoint to use. To support Microsoft Accounts and "
 "external users (users invited in from other Microsoft Entra ID directories, known "
@@ -249,7 +252,7 @@ msgid ""
 "the tenant ID or a verified domain name of your directory."
 msgstr ""
 
-#: SettingsPage.php:704
+#: SettingsPage.php:707
 msgid "Do a full logout of Microsoft Entra ID when logging out of WordPress."
 msgstr ""
 
