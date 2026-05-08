@@ -559,27 +559,22 @@ class AADSSO_Settings_Page {
 	 * Renders the `prompt` form control.
 	 */
 	public function prompt_callback() {
-		$selected =
-		 isset( $this->settings['prompt'] )
-			? $this->settings['prompt']
-			: '';
-		?>
-		<select name="aadsso_settings[prompt]" id="prompt">
-			<option value=""<?php selected( $selected, '' ); ?>>
-				<?php echo __( 'default : omit prompt parameter', 'aad-sso-wordpress' ); ?>
-			</option>
-			<option value="login"<?php selected( $selected, 'login' ); ?>>
-				<?php echo __( 'login : Forces the user to enter their credentials', 'aad-sso-wordpress' ); ?>
-			</option>
-			<option value="select_account"<?php selected( $selected, 'select_account' ); ?>>
-				<?php echo __( 'select_account : Prompts the user to select from accounts in session or choose a different account', 'aad-sso-wordpress' ); ?>
-			</option>
-		</select>
-		<?php
-		printf(
-			'<p class="description">%s</p>',
-			__( 'This specifies the login behavior for users during the Entra ID authentication process.', 'aad-sso-wordpress' )
+		$selected = isset( $this->settings['prompt'] ) ? $this->settings['prompt'] : '';
+		$options = array(
+			''               => __( '(Recommended) No prompt if already signed in', 'aad-sso-wordpress' ),
+			'select_account' => __( 'Prompt to select account (<code>prompt=select_account</code>)', 'aad-sso-wordpress' ),
+			'login'          => __( 'Prompt for fresh login (not recommended, <code>prompt=login</code>)', 'aad-sso-wordpress' ),
 		);
+		echo '<fieldset>';
+		foreach ( $options as $value => $label ) {
+			printf(
+				'<label><input type="radio" name="aadsso_settings[prompt]" value="%s"%s /> %s</label><br />',
+				esc_attr( $value ),
+				checked( $selected, $value, false ),
+				$label
+			);
+		}
+		echo '</fieldset>';
 	}
 
 	/**
